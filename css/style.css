@@ -1,3 +1,40 @@
 .text-justify {
     text-align: justify;
 }
+
+.carousel-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card {
+    transition: .4s;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.project-card img {
+    width: 100%;
+    display: block;
+}
+
+.project-card.active {
+    width: 450px;
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.project-card.side {
+    width: 280px;
+    opacity: .35;
+    transform: scale(.85);
+}
