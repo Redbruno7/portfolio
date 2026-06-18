@@ -1,5 +1,30 @@
+.profile-photo {
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Alinhamento de texto */
 .text-justify {
     text-align: justify;
+}
+
+/* Cor personalizada do Bootstrap */
+.tech-icon {
+    color: #7952B3;
+}
+
+/* Espaçamento entre seções */
+.section-spacing {
+    margin-top: 50px;
+}
+
+/* Competências */
+.skills-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .carousel-custom {
@@ -10,15 +35,26 @@
 }
 
 .carousel-track {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1200px;
+}
+
+.carousel-wrapper {
+    width: 900px;
+    height: 500px;
+    position: relative;
 }
 
 .project-card {
-    transition: .4s;
+    position: absolute;
+    top: 0;
+    transition: all .6s ease;
     border-radius: 15px;
     overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
 }
 
 .project-card img {
@@ -26,15 +62,162 @@
     display: block;
 }
 
-.project-card.active {
-    width: 450px;
-    opacity: 1;
-    transform: scale(1);
-    z-index: 2;
+.project-card h5 {
+    text-align: center;
+    padding: 12px;
+    margin: 0;
 }
 
-.project-card.side {
+/* Card central */
+.project-card.center {
+    width: 450px;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    z-index: 3;
+    opacity: 1;
+}
+
+/* Card esquerdo */
+.project-card.left {
     width: 280px;
-    opacity: .35;
-    transform: scale(.85);
+    left: 5%;
+    transform: rotateY(35deg) scale(.85);
+    opacity: .45;
+    z-index: 1;
+}
+
+/* Card direito */
+.project-card.right {
+    width: 280px;
+    right: 5%;
+    transform: rotateY(-35deg) scale(.85);
+    opacity: .45;
+    z-index: 1;
+}
+
+/* Navegação */
+.btn-nav {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-nav:hover {
+    transform: scale(1.15);
+}
+
+/* ========================= */
+/* RESPONSIVIDADE TABLET */
+/* ========================= */
+@media (max-width: 768px) {
+
+    .carousel-custom {
+        gap: 10px;
+    }
+
+    .project-card.active {
+        width: 300px;
+    }
+
+    .project-card.side {
+        width: 180px;
+    }
+
+    .btn-nav {
+        font-size: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    header p {
+        text-align: center;
+    }
+
+    header .mt-4 {
+        text-align: center;
+    }
+
+    .navbar-nav {
+        margin: 0 auto;
+    }
+}
+
+/* ========================= */
+/* RESPONSIVIDADE CELULAR */
+/* ========================= */
+@media (max-width: 576px) {
+
+    /* Cabeçalho */
+    header {
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    header img {
+        width: 250px !important;
+        margin-top: 25px;
+    }
+
+    /* Tecnologias e Ferramentas */
+    .col-4 {
+        margin-bottom: 15px;
+    }
+
+    /* Carrossel */
+    .carousel-custom {
+        gap: 5px;
+    }
+
+    .project-card.active {
+        width: 220px;
+    }
+
+    .project-card.side {
+        display: none;
+    }
+
+    .btn-nav {
+        font-size: 1.2rem;
+    }
+
+    /* Títulos */
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    /* Competências */
+    .skills-container {
+        gap: 8px;
+    }
+
+    .badge {
+        font-size: 0.8rem;
+    }
+
+    /* Rodapé */
+    footer {
+        font-size: 0.9rem;
+    }
+
+    footer a {
+        display: inline-block;
+        margin-top: 5px;
+    }
 }

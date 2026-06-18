@@ -11,11 +11,10 @@
 
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
 
 <body>
@@ -66,7 +65,7 @@
                 </div>
 
                 <div class="col-md-5 text-center">
-                    <img src="img/minha_foto.jpg" class="img-fluid rounded-circle shadow-lg" width="400">
+                    <img src="img/minha_foto.jpg" class="img-fluid rounded-circle shadow-lg profile-photo">
                 </div>
             </div>
         </div>
@@ -92,7 +91,7 @@
                 </div>
 
                 <div class="col-md-2 col-4">
-                    <i class="bi bi-bootstrap fs-1" style="color:#7952B3;"></i>
+                    <i class="bi bi-bootstrap fs-1 tech-icon"></i>
                     <p>Bootstrap</p>
                 </div>
 
@@ -188,7 +187,7 @@
             </div>
         </section>
 
-        <section style="margin-top: 50px;">
+        <section class="section-spacing">
             <h2 class="text-center mb-5">Ferramentas</h2>
 
             <div class="row text-center g-4 justify-content-center">
@@ -234,10 +233,10 @@
             </div>
         </section>
 
-        <section style="margin-top: 50px;">
+        <section class="section-spacing">
             <h2 class="text-center mb-5">Competências</h2>
 
-            <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 5px;">
+            <div class="skills-container">
                 <span class="badge bg-secondary">Resolução de Problemas</span>
                 <span class="badge bg-secondary">Aprendizagem Rápida</span>
                 <span class="badge bg-secondary">Trabalho em Equipe</span>
@@ -256,20 +255,24 @@
                     <i class="bi bi-chevron-left"></i>
                 </button>
 
-                <div class="carousel-track">
-                    <div class="project-card side">
-                        <img src="img/petshop_amor_animal.png">
-                        <h5>Petshop</h5>
-                    </div>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
 
-                    <div class="project-card active">
-                        <img src="img/cinemundo.png">
-                        <h5>CineMundo</h5>
-                    </div>
+                        <div class="project-card left">
+                            <img src="img/petshop_amor_animal.png" alt="Petshop Amor Animal">
+                            <h5>Petshop Amor Animal</h5>
+                        </div>
 
-                    <div class="project-card side">
-                        <img src="img/idesign.png">
-                        <h5>i-Design</h5>
+                        <div class="project-card center">
+                            <img src="img/cinemundo.png" alt="CineMundo">
+                            <h5>CineMundo</h5>
+                        </div>
+
+                        <div class="project-card right">
+                            <img src="img/idesign.png" alt="i-Design">
+                            <h5>i-Design</h5>
+                        </div>
+
                     </div>
                 </div>
 
@@ -304,51 +307,43 @@
     </footer>
 
     <script>
-        const projetos = [
-            {
-                titulo: "Petshop Amor Animal",
-                imagem: "img/petshop_amor_animal.png"
-            },
-            {
-                titulo: "CineMundo",
-                imagem: "img/cinemundo.png"
-            },
-            {
-                titulo: "i-Design",
-                imagem: "img/idesign.png"
-            }
-        ];
+        const track = document.querySelector(".carousel-track");
 
-        let atual = 1;
+        function atualizarClasses() {
 
-        const cards = document.querySelectorAll(".project-card");
+            const cards = track.querySelectorAll(".project-card");
 
-        function atualizarCarousel() {
+            cards.forEach(card => {
+                card.classList.remove("left", "center", "right");
+            });
 
-            const esquerda = (atual - 1 + projetos.length) % projetos.length;
-            const direita = (atual + 1) % projetos.length;
-
-            cards[0].querySelector("img").src = projetos[esquerda].imagem;
-            cards[0].querySelector("h5").textContent = projetos[esquerda].titulo;
-
-            cards[1].querySelector("img").src = projetos[atual].imagem;
-            cards[1].querySelector("h5").textContent = projetos[atual].titulo;
-
-            cards[2].querySelector("img").src = projetos[direita].imagem;
-            cards[2].querySelector("h5").textContent = projetos[direita].titulo;
+            cards[0].classList.add("left");
+            cards[1].classList.add("center");
+            cards[2].classList.add("right");
         }
 
         document.getElementById("next").addEventListener("click", () => {
-            atual = (atual + 1) % projetos.length;
-            atualizarCarousel();
+
+            const primeiro = track.firstElementChild;
+
+            track.appendChild(primeiro);
+
+            atualizarClasses();
         });
 
         document.getElementById("prev").addEventListener("click", () => {
-            atual = (atual - 1 + projetos.length) % projetos.length;
-            atualizarCarousel();
+
+            const ultimo = track.lastElementChild;
+
+            track.insertBefore(
+                ultimo,
+                track.firstElementChild
+            );
+
+            atualizarClasses();
         });
 
-        atualizarCarousel();
+        atualizarClasses();
     </script>
 </body>
 
