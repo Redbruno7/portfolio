@@ -42,9 +42,10 @@
 }
 
 .carousel-wrapper {
-    width: 900px;
+    width: 100%;
+    max-width: 900px;
     height: 500px;
-    position: relative;
+    overflow: hidden;
 }
 
 .project-card {
@@ -117,11 +118,12 @@
         gap: 10px;
     }
 
-    .project-card.active {
+    .project-card.center {
         width: 300px;
     }
 
-    .project-card.side {
+    .project-card.left,
+    .project-card.right {
         width: 180px;
     }
 
@@ -177,20 +179,30 @@
     }
 
     /* Carrossel */
+    .carousel-wrapper {
+        height: 320px;
+        overflow: hidden;
+    }
+
     .carousel-custom {
         gap: 5px;
     }
 
-    .project-card.active {
-        width: 220px;
+    .project-card.center {
+        width: 90%;
+        max-width: 320px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .project-card.side {
+    .project-card.left,
+    .project-card.right {
         display: none;
     }
 
     .btn-nav {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        flex-shrink:0;
     }
 
     /* Títulos */

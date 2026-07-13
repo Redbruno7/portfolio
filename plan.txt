@@ -1,0 +1,5 @@
+- Adicionar no portfolio seções para outros tipos de projetos.
+
+- Adicionar projetos:
+    ° Sistema de login para RPG
+    ° Controle de Estacionamento
